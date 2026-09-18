@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Anniversary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-layer">
+  <img src="assets/background.jpg" alt="">
+</div>
+
+<div class="stage">
+
+  <!-- Step 1: Memory Photos -->
+  <section class="step step-1 active" data-step="1">
+    <div class="photo-stack" id="photoStack">
+      <div class="polaroid" data-left="18" data-top="22" data-rot="-9"><img src="assets/couple1.jpg" alt="Ảnh couple 1"></div>
+      <div class="polaroid" data-left="50" data-top="14" data-rot="6"><img src="assets/couple2.jpg" alt="Ảnh couple 2"></div>
+      <div class="polaroid" data-left="78" data-top="30" data-rot="-5"><img src="assets/couple3.jpg" alt="Ảnh couple 3"></div>
+      <div class="polaroid" data-left="30" data-top="62" data-rot="7"><img src="assets/couple4.jpg" alt="Ảnh couple 4"></div>
+      <div class="polaroid" data-left="65" data-top="68" data-rot="-6"><img src="assets/couple5.jpg" alt="Ảnh couple 5"></div>
+    </div>
+    <p class="hint">
+      <svg class="icon icon-sparkle" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.6 5.1L19 10l-5.4 1.9L12 17l-1.6-5.1L5 10l5.4-1.9L12 3z"/></svg>
+      chạm để xem, kéo để xáo ảnh nhé
+      <svg class="icon icon-sparkle" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.6 5.1L19 10l-5.4 1.9L12 17l-1.6-5.1L5 10l5.4-1.9L12 3z"/></svg>
+    </p>
+    <p class="anniversary-line">
+      <span class="gradient-text">23/9/2026 — Happy Anniversary, my forever</span>
+      <svg class="icon icon-heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-6.7-4.3-9.6-8.3C.6 9.9 1.4 6.4 4.3 4.9c2.3-1.2 5-.5 6.6 1.4l1.1 1.3 1.1-1.3c1.6-1.9 4.3-2.6 6.6-1.4 2.9 1.5 3.7 5 1.9 7.8C18.7 16.7 12 21 12 21z"/></svg>
+    </p>
+    <button class="btn" id="btnStep2">xin chào anh yêuu</button>
+
+    <div class="lightbox" id="lightbox">
+      <img src="" alt="" id="lightboxImg">
+    </div>
+  </section>
+
+  <!-- Step 2: Envelope -->
+  <section class="step step-2" data-step="2">
+    <img src="assets/envelope.png" alt="Phong thư" class="envelope" id="envelopeImg">
+    <button class="btn" id="btnOpenEnvelope">anh mở thư nhé</button>
+  </section>
+
+  <!-- Step 3: The Letter -->
+  <section class="step step-3" data-step="3">
+    <div class="letter-wrap">
+      <div class="letter-card">
+        <p class="salutation">Gửi tình yêu của em…</p>
+        <p>Cảm ơn Anh đã đến bên em vào những ngày tăm tối nhất trong tâm hồn em. Dù lúc đó chúng mình chỉ là bạn bè, anh luôn dành sự quan tâm cho em, lắng nghe tất cả mọi thứ và âm thầm ghi nhớ những gì em nói. Từ ngày mình bắt đầu yêu nhau, em thật sự nghĩ mình đã yêu đúng người là khi:</p>
+        <p>Chưa bao giờ anh nặng lời với em dù em làm anh giận và tổn thương đến mấy vẫn ân cần quan tâm em, sợ em trách ngược bản thân mình.</p>
+        <p>Là khi những câu nói vu vơ em thích, anh đã ghé qua, đưa cho em sau những giờ anh tan làm.</p>
+        <p>Là khi em rất mệt vì có quá nhiều deadline, anh đã hỗ trợ em rất nhiều và luôn đặt đồ ăn cho em vì sợ em bận quá mà bỏ bữa.</p>
+        <p>Là khi em ốm mệt đến mức vào viện, phần lớn anh luôn tự trách mình vì sao không chăm sóc em tốt hơn.</p>
+        <p>Là khi trong tất cả mọi hành trình của em, anh luôn bên cạnh và làm người đồng hành.</p>
+        <p>Là khi chúng ta có những lúc đều mệt, vì mọi thứ, vì tất cả đến không như chúng ta mong muốn, anh luôn cố gắng vì em, che chở em những lúc em yếu đuối nhất.</p>
+        <p>Lúc nào anh cũng sợ em thiệt thòi nhưng tất cả những gì anh đã và đang làm với em thật sự hạnh phúc lắm rồi, cảm ơn vì đã yêu em, yêu cả "đứa trẻ" bên trong tâm hồn em.</p>
+        <p class="no-margin">Nhân dịp kỷ niệm đặc biệt của chúng ta, em mong rằng hành trình sau này, em và anh sẽ luôn cố gắng vì nhau, tiếp tục những hạnh phúc mà chúng ta đang có đến mãi mãi, Anh nhé!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lyric subtitle: fill in your favorite lines in script.js (LYRIC_LINES) -->
+  <div class="lyric-ticker" id="lyricTicker">
+    <p class="lyric-line" id="lyricLine"></p>
+  </div>
+
+  <!-- Music Player: The Marías - Sienna -->
+  <div class="music-player" id="musicPlayer">
+    <div class="music-art" id="musicArt">
+      <img src="assets/couple2.jpg" alt="Album art">
+    </div>
+    <div class="music-info">
+      <p class="music-title">Sienna</p>
+      <p class="music-artist">The Marías</p>
+    </div>
+    <button class="music-toggle" id="musicToggle" aria-label="Phát / tạm dừng nhạc">
+      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <div id="spotifyEmbed" class="spotify-embed-slot"></div>
+  </div>
+
+</div>
+
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;font-family:'Cormorant Garamond',serif}
+img{image-rendering:-webkit-optimize-contrast}
+@media(min-width:768px){.md-row{flex-direction:row!important}.md-gap-48{gap:48px!important}.md-w-400{width:400px!important}.md-w-650{width:650px!important}.md-w-600{width:600px!important}}
+@media(min-width:1024px){.lg-w-750{width:750px!important}}
+@keyframes pulseSoft{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes floatUpElegant{0%{transform:translateY(0) translateX(0) scale(.8) rotate(0deg);opacity:0}20%{opacity:.9}50%{transform:translateY(-200px) translateX(25px) scale(1.1) rotate(15deg)}80%{opacity:.8}100%{transform:translateY(-450px) translateX(-20px) scale(1.2) rotate(-10deg);opacity:0}}
+</style>
+</helmet>
+
+<div style="position:fixed;inset:0;z-index:0;background:#f4f1eb">
+  <img ref="{{ bgImgRef }}" alt="" style="width:100%;height:100%;object-fit:cover">
+</div>
+
+<div style="position:relative;z-index:1;min-height:100vh;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px 64px;transition:opacity .5s ease;opacity:{{ stepOpacity }}">
+
+  <sc-if value="{{ step===1 }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;gap:16px;width:100%" class="md-gap-48">
+      <img ref="{{ photoARef }}" alt="Ảnh A" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 20px 25px rgba(0,0,0,.35))" class="md-w-400">
+      <img ref="{{ photoBRef }}" alt="Ảnh B" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 20px 25px rgba(0,0,0,.35))" class="md-w-400">
+    </div>
+    <p style="margin:24px 0 0;text-align:center;font-style:italic;font-weight:600;font-size:clamp(28px,5vw,44px);color:#57534e">23/9/2026 — Happy Anniversary, my forever. ❤️</p>
+    <button onClick="{{ goStep2 }}" style="background:#fb7185;color:#fff;padding:12px 48px;border-radius:999px;font-weight:500;box-shadow:0 10px 20px rgba(0,0,0,.15);font-size:20px;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;margin-top:40px;transition:background .2s ease" style-hover="background:#f43f5e">xin chào anh yêuu</button>
+  </sc-if>
+
+  <sc-if value="{{ step===2 }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;gap:40px;background:transparent;padding:0;margin:0;border:none;box-shadow:none">
+      <img ref="{{ envImgRef }}" alt="Phong thư" onClick="{{ openEnvelope }}" style="width:90vw;height:auto;object-fit:contain;cursor:pointer;transition:transform .7s ease;filter:drop-shadow(0 20px 25px rgba(0,0,0,.35))" style-hover="transform:scale(1.05)" class="md-w-600">
+      <button onClick="{{ openEnvelope }}" style="background:#fb7185;color:#fff;border:none;padding:12px 48px;border-radius:999px;font-size:20px;font-weight:500;box-shadow:0 10px 20px rgba(0,0,0,.15);cursor:pointer;font-family:'Cormorant Garamond',serif" style-hover="background:#f43f5e">anh mở thư nhé</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ step===3 }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%;max-width:700px;margin:0 auto">
+      <div style="background:#FAF6F0;border:1px solid #e8dccb;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.2);padding:clamp(30px,6vw,64px);color:#44403c;box-sizing:border-box;max-height:80vh;overflow-y:auto">
+        <div style="font-size:clamp(17px,2vw,21px);line-height:2;">
+          <p style="margin:0 0 28px;font-style:italic;font-weight:600;font-size:clamp(26px,4vw,38px);text-align:center;color:#57534e">Gửi tình yêu của em…</p>
+          <p style="margin:0 0 24px">Cảm ơn Anh đã đến bên em vào những ngày tăm tối nhất trong tâm hồn em. Dù lúc đó chúng mình chỉ là bạn bè, anh luôn dành sự quan tâm cho em, lắng nghe tất cả mọi thứ và âm thầm ghi nhớ những gì em nói. Từ ngày mình bắt đầu yêu nhau, em thật sự nghĩ mình đã yêu đúng người là khi:</p>
+          <p style="margin:0 0 16px">Chưa bao giờ anh nặng lời với em dù em làm anh giận và tổn thương đến mấy vẫn ân cần quan tâm em, sợ em trách ngược bản thân mình.</p>
+          <p style="margin:0 0 16px">Là khi những câu nói vu vơ em thích, anh đã ghé qua, đưa cho em sau những giờ anh tan làm.</p>
+          <p style="margin:0 0 16px">Là khi em rất mệt vì có quá nhiều deadline, anh đã hỗ trợ em rất nhiều và luôn đặt đồ ăn cho em vì sợ em bận quá mà bỏ bữa.</p>
+          <p style="margin:0 0 16px">Là khi em ốm mệt đến mức vào viện, phần lớn anh luôn tự trách mình vì sao không chăm sóc em tốt hơn.</p>
+          <p style="margin:0 0 16px">Là khi trong tất cả mọi hành trình của em, anh luôn bên cạnh và làm người đồng hành.</p>
+          <p style="margin:0 0 24px">Là khi chúng ta có những lúc đều mệt, vì mọi thứ, vì tất cả đến không như chúng ta mong muốn, anh luôn cố gắng vì em, che chở em những lúc em yếu đuối nhất.</p>
+          <p style="margin:0 0 24px">Lúc nào anh cũng sợ em thiệt thòi nhưng tất cả những gì anh đã và đang làm với em thật sự hạnh phúc lắm rồi, cảm ơn vì đã yêu em, yêu cả "đứa trẻ" bên trong tâm hồn em.</p>
+          <p style="margin:0">Nhân dịp kỷ niệm đặc biệt của chúng ta, em mong rằng hành trình sau này, em và anh sẽ luôn cố gắng vì nhau, tiếp tục những hạnh phúc mà chúng ta đang có đến mãi mãi, Anh nhé!</p>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;backgroundImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download (3).jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoA&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download-f52a16df.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoB&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download (1)-c8f68603.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;envelopeImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/654c5631-1fb3-402c-b96b-c63b0b8f68a8.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;}}">
+class Component extends DCLogic {
+  state = { step: 1 };
+
+  bgImgRef = (el) => { if (el) el.src = this.props.backgroundImage ?? 'uploads/download (3).jpg'; };
+  photoARef = (el) => { if (el) el.src = this.props.photoA ?? 'uploads/download-f52a16df.jpg'; };
+  photoBRef = (el) => { if (el) el.src = this.props.photoB ?? 'uploads/download (1)-c8f68603.jpg'; };
+  envImgRef = (el) => { if (el) el.src = this.props.envelopeImage ?? 'uploads/654c5631-1fb3-402c-b96b-c63b0b8f68a8.png'; };
+
+  goStep2 = () => this.setState({ step: 2 });
+  openEnvelope = () => this.setState({ step: 3 });
+
+  renderVals() {
+    return {
+      step: this.state.step,
+      stepOpacity: 1,
+      bgImgRef: this.bgImgRef,
+      photoARef: this.photoARef,
+      photoBRef: this.photoBRef,
+      envImgRef: this.envImgRef,
+      goStep2: this.goStep2,
+      openEnvelope: this.openEnvelope
+    };
+  }
+}
+
+</script>
+</body>
+</html>
