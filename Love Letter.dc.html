@@ -14,8 +14,8 @@
 <style>
 body{margin:0;font-family:'Cormorant Garamond',serif}
 img{image-rendering:-webkit-optimize-contrast}
-@media(min-width:768px){.md-row{flex-direction:row!important}.md-gap-48{gap:48px!important}.md-w-400{width:400px!important}.md-w-650{width:650px!important}.md-w-600{width:600px!important}}
-@media(min-width:1024px){.lg-w-750{width:750px!important}}
+@media(min-width:768px){.md-row{flex-direction:row!important}.md-gap-48{gap:48px!important}.md-w-400{width:400px!important}.md-w-650{width:650px!important}.md-w-600{width:600px!important}.md-w-350{width:350px!important}.md-gap-12{gap:48px!important}}
+@media(min-width:1024px){.lg-w-750{width:750px!important}.lg-w-400{width:400px!important}}
 @keyframes pulseSoft{0%,100%{opacity:1}50%{opacity:.55}}
 @keyframes floatUpElegant{0%{transform:translateY(0) translateX(0) scale(.8) rotate(0deg);opacity:0}20%{opacity:.9}50%{transform:translateY(-200px) translateX(25px) scale(1.1) rotate(15deg)}80%{opacity:.8}100%{transform:translateY(-450px) translateX(-20px) scale(1.2) rotate(-10deg);opacity:0}}
 </style>
@@ -28,9 +28,9 @@ img{image-rendering:-webkit-optimize-contrast}
 <div style="position:relative;z-index:1;min-height:100vh;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px 64px;transition:opacity .5s ease;opacity:{{ stepOpacity }}">
 
   <sc-if value="{{ step===1 }}" hint-placeholder-val="{{ true }}">
-    <div style="display:flex;flex-direction:row;justify-content:center;align-items:center;gap:16px;width:100%" class="md-gap-48">
-      <img ref="{{ photoARef }}" alt="Ảnh A" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 20px 25px rgba(0,0,0,.35))" class="md-w-400">
-      <img ref="{{ photoBRef }}" alt="Ảnh B" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 20px 25px rgba(0,0,0,.35))" class="md-w-400">
+    <div style="display:flex;flex-direction:row;justify-content:center;align-items:flex-start;gap:16px;width:100%" class="md-gap-12">
+      <img ref="{{ photoARef }}" alt="Ảnh A" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(0,0,0,.4));border-radius:6px" class="md-w-350 lg-w-400">
+      <img ref="{{ photoBRef }}" alt="Ảnh B" style="width:45vw;height:auto;object-fit:contain;filter:drop-shadow(0 25px 25px rgba(0,0,0,.4));border-radius:6px" class="md-w-350 lg-w-400"><!-- classes equivalent to w-[45vw] md:w-[350px] lg:w-[400px] h-auto object-contain drop-shadow-2xl rounded-md, layout flex-row justify-center items-start gap-4 md:gap-12 w-full -->
     </div>
     <p style="margin:24px 0 0;text-align:center;font-style:italic;font-weight:600;font-size:clamp(28px,5vw,44px);color:#57534e">23/9/2026 — Happy Anniversary, my forever. ❤️</p>
     <button onClick="{{ goStep2 }}" style="background:#fb7185;color:#fff;padding:12px 48px;border-radius:999px;font-weight:500;box-shadow:0 10px 20px rgba(0,0,0,.15);font-size:20px;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;margin-top:40px;transition:background .2s ease" style-hover="background:#f43f5e">xin chào anh yêuu</button>
@@ -65,14 +65,14 @@ img{image-rendering:-webkit-optimize-contrast}
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;backgroundImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download (3).jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoA&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download-f52a16df.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoB&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/download (1)-c8f68603.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;envelopeImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;uploads/654c5631-1fb3-402c-b96b-c63b0b8f68a8.png&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;backgroundImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/photoA.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoA&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/photoA.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;photoB&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/photoB.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;},&quot;envelopeImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/photoB.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Images&quot;}}">
 class Component extends DCLogic {
   state = { step: 1 };
 
-  bgImgRef = (el) => { if (el) el.src = this.props.backgroundImage ?? 'uploads/download (3).jpg'; };
-  photoARef = (el) => { if (el) el.src = this.props.photoA ?? 'uploads/download-f52a16df.jpg'; };
-  photoBRef = (el) => { if (el) el.src = this.props.photoB ?? 'uploads/download (1)-c8f68603.jpg'; };
-  envImgRef = (el) => { if (el) el.src = this.props.envelopeImage ?? 'uploads/654c5631-1fb3-402c-b96b-c63b0b8f68a8.png'; };
+  bgImgRef = (el) => { if (el) el.src = this.props.backgroundImage ?? 'assets/photoA.jpg'; };
+  photoARef = (el) => { if (el) el.src = this.props.photoA ?? 'assets/photoA.jpg'; };
+  photoBRef = (el) => { if (el) el.src = this.props.photoB ?? 'assets/photoB.jpg'; };
+  envImgRef = (el) => { if (el) el.src = this.props.envelopeImage ?? 'assets/photoB.jpg'; };
 
   goStep2 = () => this.setState({ step: 2 });
   openEnvelope = () => this.setState({ step: 3 });

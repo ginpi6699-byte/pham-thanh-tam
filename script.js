@@ -77,12 +77,12 @@ document.getElementById('btnStep2').addEventListener('click', () => goToStep(2))
 document.getElementById('btnOpenEnvelope').addEventListener('click', () => goToStep(3));
 document.getElementById('envelopeImg').addEventListener('click', () => goToStep(3));
 
-// ---- Interactive photo stack (Step 1) ----
+// ---- Draggable memory photos (Step 1) ----
 const stack = document.getElementById('photoStack');
-const polaroids = Array.from(document.querySelectorAll('.polaroid'));
-let topZ = polaroids.length;
+const photoItems = Array.from(document.querySelectorAll('.photo-item'));
+let topZ = photoItems.length;
 
-polaroids.forEach((el, i) => {
+photoItems.forEach((el, i) => {
   el.style.left = `${el.dataset.left}%`;
   el.style.top = `${el.dataset.top}%`;
   el.style.setProperty('--rot', `${el.dataset.rot}deg`);
@@ -118,7 +118,7 @@ polaroids.forEach((el, i) => {
     el.style.top = `${Math.min(96, Math.max(4, newTop))}%`;
   });
 
-  const endDrag = (e) => {
+  const endDrag = () => {
     if (!dragging) return;
     dragging = false;
     el.classList.remove('dragging');

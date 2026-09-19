@@ -84,49 +84,46 @@ img {
   to { opacity: 1; }
 }
 
-/* Step 1 — interactive photo stack */
+/* Step 1 — two draggable memory photos */
 .photo-stack {
   position: relative;
-  width: min(92vw, 560px);
-  height: min(92vw, 560px);
-  max-height: 460px;
+  width: min(88vw, 420px);
+  height: min(88vw, 420px);
+  max-height: 360px;
   touch-action: none;
 }
 
-.polaroid {
+.photo-item {
   position: absolute;
   left: 0;
   top: 0;
-  width: clamp(120px, 26vw, 170px);
-  background: #fff;
-  padding: 8px 8px 22px;
-  border-radius: 4px;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, .3);
+  width: clamp(130px, 24vw, 190px);
   cursor: grab;
   user-select: none;
   transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
   animation: floatSoft 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
-  transition: box-shadow .25s ease;
+  transition: filter .25s ease;
 }
 
-.polaroid img {
+.photo-item img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 2px;
+  border-radius: 4px;
   pointer-events: none;
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, .35));
 }
 
-.polaroid:hover {
-  box-shadow: 0 18px 30px rgba(0, 0, 0, .4);
+.photo-item:hover img {
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, .45));
 }
 
-.polaroid.dragging {
+.photo-item.dragging {
   cursor: grabbing;
   animation-play-state: paused;
   transition: none;
-  box-shadow: 0 24px 40px rgba(0, 0, 0, .45);
+  z-index: 10;
 }
 
 @keyframes floatSoft {
