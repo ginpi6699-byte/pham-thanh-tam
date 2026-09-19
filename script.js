@@ -147,40 +147,29 @@ function closeLightbox() {
 
 lightbox.addEventListener('click', closeLightbox);
 
-// ---- Music player: The Marías - Sienna (via Spotify iFrame API) ----
+// ---- Music player: The Marías - Sienna (local audio file) ----
 const musicArt = document.getElementById('musicArt');
 const musicToggle = document.getElementById('musicToggle');
 const iconPlay = musicToggle.querySelector('.icon-play');
 const iconPause = musicToggle.querySelector('.icon-pause');
-let spotifyController = null;
-let isPlaying = false;
+const bgAudio = document.getElementById('bgAudio');
 
 function setPlayingUI(playing) {
-  isPlaying = playing;
   musicArt.classList.toggle('spinning', playing);
   iconPlay.style.display = playing ? 'none' : 'block';
   iconPause.style.display = playing ? 'block' : 'none';
 }
 
-function forceHideSpotifyIframe(iframe) {
-  iframe.style.setProperty('position', 'fixed', 'important');
-  iframe.style.setProperty('left', '0', 'important');
-  iframe.style.setProperty('bottom', '0', 'important');
-  iframe.style.setProperty('width', '1px', 'important');
-  iframe.style.setProperty('height', '1px', 'important');
-  iframe.style.setProperty('opacity', '0', 'important');
-  iframe.style.setProperty('pointer-events', 'none', 'important');
-  iframe.setAttribute('tabindex', '-1');
-}
+bgAudio.addEventListener('play', () => setPlayingUI(true));
+bgAudio.addEventListener('pause', () => setPlayingUI(false));
 
 // Browsers only allow audio to start playing in direct response to a real
 // user gesture (click/tap/keypress) — and it must happen synchronously
-// inside that gesture's event handler, not "later" once Spotify is ready.
-// So instead of a single one-time attempt, we retry on every tap/keypress
-// until Spotify actually confirms playback started (see playback_update).
+// inside that gesture's event handler. So we retry on every tap/keypress
+// until playback actually starts.
 function tryAutoplay() {
-  if (spotifyController && !isPlaying) {
-    spotifyController.play();
+  if (bgAudio.paused) {
+    bgAudio.play().catch(() => {});
   }
 }
 
@@ -222,34 +211,10 @@ document.addEventListener('pointerdown', (e) => {
   }
 });
 
-window.onSpotifyIframeApiReady = (IFrameAPI) => {
-  const element = document.getElementById('spotifyEmbed');
-  const options = {
-    uri: 'spotify:track:0InIeZW4P6VO7dUGRM4AKH',
-    width: '300',
-    height: '80',
-  };
-  IFrameAPI.createController(element, options, (EmbedController) => {
-    spotifyController = EmbedController;
-    EmbedController.addListener('playback_update', (e) => {
-      setPlayingUI(!e.data.isPaused && !e.data.isBuffering);
-    });
-
-    const iframe = element.querySelector('iframe');
-    if (iframe) {
-      forceHideSpotifyIframe(iframe);
-      // Spotify's SDK sometimes rewrites the iframe's inline style
-      // (e.g. on resize/expand) — reapply our hidden sizing whenever it does.
-      const observer = new MutationObserver(() => {
-        if (iframe.style.width !== '1px') forceHideSpotifyIframe(iframe);
-      });
-      observer.observe(iframe, { attributes: true, attributeFilter: ['style'] });
-    }
-
-    tryAutoplay();
-  });
-};
-
 musicToggle.addEventListener('click', () => {
-  if (spotifyController) spotifyController.togglePlay();
+  if (bgAudio.paused) {
+    bgAudio.play().catch(() => {});
+  } else {
+    bgAudio.pause();
+  }
 });

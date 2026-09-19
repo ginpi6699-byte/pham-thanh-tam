@@ -299,22 +299,6 @@ img {
   height: 18px;
 }
 
-.spotify-embed-slot {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.spotify-embed-slot iframe {
-  width: 300px;
-  height: 80px;
-}
-
 @media (max-width: 600px) {
   .music-player {
     bottom: 16px;
